@@ -1,0 +1,52 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:12-alpine
+    deploy:
+      mode: global
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    environment:
+      - POSTGRES_DB=${DB_NAME:-amorphic_notes}
+      - POSTGRES_USER=${DB_USER:-nodejs}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-nodejs}
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2-alpine
+    command: redis-server
+    volumes:
+      - redis:/var/lib/redis
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+
+  angular-client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${CLIENT_PORT:-4200}:4200"
+    depends_on:
+      - redis
+      - postgres
+    entrypoint: ["npm", "run", "start-in-docker", "--prefix", "/app/angular-client"]
+
+  angular-daemon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${DAEMON_PORT:-3001}:3001"
+    depends_on:
+      - redis
+      - postgres
+    entrypoint: ["npm", "start", "--prefix", "/app/angular-daemon"]
+    environment:
+      - REDIS_URL=redis://redis:6379
+
+volumes:
+  postgres-db-volume:
+  redis:
