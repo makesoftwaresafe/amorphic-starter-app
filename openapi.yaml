@@ -1,0 +1,1105 @@
+openapi: 3.1.0
+info:
+  version: '1.0'
+  title: OpenAPI specification converted from HAR
+  description: 'TODO: Add Description'
+  x-mayhem4api-converted: 2023-08-16 10:04:27.151868 -06:00 (from har)
+servers:
+  - url: '{scheme}://localhost:4200/{basePath}'
+    variables:
+      scheme:
+        enum:
+          - https
+          - http
+        default: http
+      basePath:
+        default: ''
+tags:
+  - name: api
+components:
+  schemas:
+    ErrorModel:
+      type: object
+      properties:
+        code:
+          type: string
+  securitySchemes:
+    JWT:
+      description: |
+        You can create a JSON Web Token (JWT) during auth.
+        Usage format: `Bearer <JWT>`
+      name: Authorization
+      type: apiKey
+      in: header
+paths:
+  /api/v1/authors:
+    post:
+      security: []
+      tags:
+        - api
+      summary: api
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+            example:
+              name: Tad Williams
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  __id__:
+                    type: string
+                  notes:
+                    type: array
+                    items: {}
+                  name:
+                    type: string
+                  _id:
+                    type: string
+                  __version__:
+                    type: number
+              example:
+                __id__: local-Author-4
+                notes: []
+                name: Tad Williams
+                _id: 64dcf035f02549001d0d19fe
+                __version__: 1
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+    get:
+      security: []
+      tags:
+        - api
+      summary: api
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    notes:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          __id__:
+                            type: string
+                          _id:
+                            type: string
+                          _template:
+                            type: string
+                          __version__:
+                            type: string
+                          title:
+                            type: string
+                          _ct_org_title:
+                            type: string
+                          body:
+                            type: string
+                          author:
+                            type: object
+                            properties:
+                              __id__:
+                                type: string
+                          _ct_org_author:
+                            type: string
+                        required:
+                          - __id__
+                          - _id
+                          - _template
+                          - __version__
+                          - title
+                          - _ct_org_title
+                          - body
+                          - author
+                          - _ct_org_author
+                    __id__:
+                      type: string
+                    _id:
+                      type: string
+                    _template:
+                      type: string
+                    __version__:
+                      type: string
+                    name:
+                      type: string
+                    _ct_org_name:
+                      type: string
+              example:
+                - notes:
+                    - __id__: persist-Note-64dcf057f02549001d0d19ff
+                      _id: 64dcf057f02549001d0d19ff
+                      _template: Note
+                      __version__: '1'
+                      title: Otherland
+                      _ct_org_title: Otherland
+                      body: So many books
+                      author:
+                        __id__: persist-Author-64dcf035f02549001d0d19fe
+                      _ct_org_author: 64dcf035f02549001d0d19fe
+                    - __id__: persist-Note-64dcf30cf02549001d0d1a01
+                      _id: 64dcf30cf02549001d0d1a01
+                      _template: Note
+                      __version__: '2'
+                      title: test
+                      _ct_org_title: test
+                      body: defc
+                      author:
+                        __id__: persist-Author-64dcf035f02549001d0d19fe
+                      _ct_org_author: 64dcf035f02549001d0d19fe
+                  __id__: persist-Author-64dcf035f02549001d0d19fe
+                  _id: 64dcf035f02549001d0d19fe
+                  _template: Author
+                  __version__: '1'
+                  name: Tad Williams
+                  _ct_org_name: Tad Williams
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+  /api/v1/authors/{_id}:
+    get:
+      security: []
+      tags:
+        - api
+      summary: api
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  notes:
+                    type: array
+                    items: {}
+                  __id__:
+                    type: string
+                  _id:
+                    type: string
+                  _template:
+                    type: string
+                  __version__:
+                    type: string
+                  name:
+                    type: string
+                  _ct_org_name:
+                    type: string
+              example:
+                notes: []
+                __id__: persist-Author-64dcf02bf02549001d0d19fd
+                _id: 64dcf02bf02549001d0d19fd
+                _template: Author
+                __version__: '1'
+                name: Leo Tolstoy
+                _ct_org_name: Leo Tolstoy
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+    delete:
+      security: []
+      tags:
+        - api
+      summary: api
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  notes:
+                    type: array
+                    items: {}
+                  __id__:
+                    type: string
+                  _id:
+                    type: string
+                  _template:
+                    type: string
+                  __version__:
+                    type: string
+                  name:
+                    type: string
+                  _ct_org_name:
+                    type: string
+              example:
+                notes: []
+                __id__: persist-Author-64dcf02bf02549001d0d19fd
+                _id: 64dcf02bf02549001d0d19fd
+                _template: Author
+                __version__: '1'
+                name: Leo Tolstoy
+                _ct_org_name: Leo Tolstoy
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+    put:
+      security: []
+      tags:
+        - api
+      summary: api
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                notes:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      __id__:
+                        type: string
+                      _id:
+                        type: string
+                      _template:
+                        type: string
+                      __version__:
+                        type: string
+                      title:
+                        type: string
+                      _ct_org_title:
+                        type: string
+                      body:
+                        type: string
+                      author:
+                        type: object
+                        properties:
+                          __id__:
+                            type: string
+                      _ct_org_author:
+                        type: string
+                    required:
+                      - __id__
+                      - _id
+                      - _template
+                      - __version__
+                      - title
+                      - _ct_org_title
+                      - body
+                      - author
+                      - _ct_org_author
+                __id__:
+                  type: string
+                _id:
+                  type: string
+                _template:
+                  type: string
+                __version__:
+                  type: string
+                name:
+                  type: string
+                _ct_org_name:
+                  type: string
+            example:
+              notes:
+                - __id__: persist-Note-64dcf057f02549001d0d19ff
+                  _id: 64dcf057f02549001d0d19ff
+                  _template: Note
+                  __version__: '1'
+                  title: Otherland
+                  _ct_org_title: Otherland
+                  body: So many books
+                  author:
+                    __id__: persist-Author-64dcf035f02549001d0d19fe
+                  _ct_org_author: 64dcf035f02549001d0d19fe
+                - __id__: persist-Note-64dcf30cf02549001d0d1a01
+                  _id: 64dcf30cf02549001d0d1a01
+                  _template: Note
+                  __version__: '2'
+                  title: test
+                  _ct_org_title: test
+                  body: defc
+                  author:
+                    __id__: persist-Author-64dcf035f02549001d0d19fe
+                  _ct_org_author: 64dcf035f02549001d0d19fe
+              __id__: persist-Author-64dcf035f02549001d0d19fe
+              _id: 64dcf035f02549001d0d19fe
+              _template: Author
+              __version__: '1'
+              name: Tad Williams123
+              _ct_org_name: Tad Williams
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  notes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        __id__:
+                          type: string
+                        _id:
+                          type: string
+                        _template:
+                          type: string
+                        __version__:
+                          type: string
+                        title:
+                          type: string
+                        _ct_org_title:
+                          type: string
+                        body:
+                          type: string
+                        author:
+                          type: object
+                          properties:
+                            __id__:
+                              type: string
+                        _ct_org_author:
+                          type: string
+                      required:
+                        - __id__
+                        - _id
+                        - _template
+                        - __version__
+                        - title
+                        - _ct_org_title
+                        - body
+                        - author
+                        - _ct_org_author
+                  __id__:
+                    type: string
+                  _id:
+                    type: string
+                  _template:
+                    type: string
+                  __version__:
+                    type: number
+                  name:
+                    type: string
+                  _ct_org_name:
+                    type: string
+              example:
+                notes:
+                  - __id__: persist-Note-64dcf057f02549001d0d19ff
+                    _id: 64dcf057f02549001d0d19ff
+                    _template: Note
+                    __version__: '1'
+                    title: Otherland
+                    _ct_org_title: Otherland
+                    body: So many books
+                    author:
+                      __id__: persist-Author-64dcf035f02549001d0d19fe
+                    _ct_org_author: 64dcf035f02549001d0d19fe
+                  - __id__: persist-Note-64dcf30cf02549001d0d1a01
+                    _id: 64dcf30cf02549001d0d1a01
+                    _template: Note
+                    __version__: '2'
+                    title: test
+                    _ct_org_title: test
+                    body: defc
+                    author:
+                      __id__: persist-Author-64dcf035f02549001d0d19fe
+                    _ct_org_author: 64dcf035f02549001d0d19fe
+                __id__: persist-Author-64dcf035f02549001d0d19fe
+                _id: 64dcf035f02549001d0d19fe
+                _template: Author
+                __version__: 2
+                name: Tad Williams123
+                _ct_org_name: Tad Williams
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+  /api/v1/notes:
+    post:
+      security: []
+      tags:
+        - api
+      summary: api
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+                author:
+                  type: object
+                  properties:
+                    notes:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          __id__:
+                            type: string
+                          _id:
+                            type: string
+                          _template:
+                            type: string
+                          __version__:
+                            type: string
+                          title:
+                            type: string
+                          _ct_org_title:
+                            type: string
+                          body:
+                            type: string
+                          author:
+                            type: object
+                            properties:
+                              __id__:
+                                type: string
+                          _ct_org_author:
+                            type: string
+                    __id__:
+                      type: string
+                    _id:
+                      type: string
+                    _template:
+                      type: string
+                    __version__:
+                      type: string
+                    name:
+                      type: string
+                    _ct_org_name:
+                      type: string
+            example:
+              title: abcd
+              body: defc
+              author:
+                notes:
+                  - __id__: persist-Note-64dcf057f02549001d0d19ff
+                    _id: 64dcf057f02549001d0d19ff
+                    _template: Note
+                    __version__: '1'
+                    title: Otherland
+                    _ct_org_title: Otherland
+                    body: So many books
+                    author:
+                      __id__: persist-Author-64dcf035f02549001d0d19fe
+                    _ct_org_author: 64dcf035f02549001d0d19fe
+                __id__: persist-Author-64dcf035f02549001d0d19fe
+                _id: 64dcf035f02549001d0d19fe
+                _template: Author
+                __version__: '1'
+                name: Tad Williams
+                _ct_org_name: Tad Williams
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  __id__:
+                    type: string
+                  title:
+                    type: string
+                  body:
+                    type: string
+                  author:
+                    type: object
+                    properties:
+                      notes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            __id__:
+                              type: string
+                            _id:
+                              type: string
+                            _template:
+                              type: string
+                            __version__:
+                              type: string
+                            title:
+                              type: string
+                            _ct_org_title:
+                              type: string
+                            body:
+                              type: string
+                            author:
+                              type: object
+                              properties:
+                                __id__:
+                                  type: string
+                            _ct_org_author:
+                              type: string
+                      __id__:
+                        type: string
+                      _id:
+                        type: string
+                      _template:
+                        type: string
+                      __version__:
+                        type: string
+                      name:
+                        type: string
+                      _ct_org_name:
+                        type: string
+                  _id:
+                    type: string
+                  __version__:
+                    type: number
+              example:
+                __id__: local-Note-7
+                title: abcd
+                body: defc
+                author:
+                  notes:
+                    - __id__: persist-Note-64dcf057f02549001d0d19ff
+                      _id: 64dcf057f02549001d0d19ff
+                      _template: Note
+                      __version__: '1'
+                      title: Otherland
+                      _ct_org_title: Otherland
+                      body: So many books
+                      author:
+                        __id__: persist-Author-64dcf035f02549001d0d19fe
+                      _ct_org_author: 64dcf035f02549001d0d19fe
+                  __id__: persist-Author-64dcf035f02549001d0d19fe
+                  _id: 64dcf035f02549001d0d19fe
+                  _template: Author
+                  __version__: '1'
+                  name: Tad Williams
+                  _ct_org_name: Tad Williams
+                _id: 64dcf30cf02549001d0d1a01
+                __version__: 1
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+    get:
+      security: []
+      tags:
+        - api
+      summary: api
+      parameters: []
+      responses:
+        '304':
+          description: Not Modified
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    __id__:
+                      type: string
+                    _id:
+                      type: string
+                    _template:
+                      type: string
+                    __version__:
+                      type: string
+                    title:
+                      type: string
+                    _ct_org_title:
+                      type: string
+                    body:
+                      type: string
+                    author:
+                      type: object
+                      properties:
+                        notes:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              __id__:
+                                type: string
+                        __id__:
+                          type: string
+                        _id:
+                          type: string
+                        _template:
+                          type: string
+                        __version__:
+                          type: string
+                        name:
+                          type: string
+                        _ct_org_name:
+                          type: string
+                    _ct_org_author:
+                      type: string
+                  required:
+                    - __id__
+                    - _id
+                    - _template
+                    - __version__
+                    - title
+                    - _ct_org_title
+                    - body
+                    - author
+                    - _ct_org_author
+              example:
+                - __id__: persist-Note-64dbe7e5ba9cb8001dfc5d1f
+                  _id: 64dbe7e5ba9cb8001dfc5d1f
+                  _template: Note
+                  __version__: '1'
+                  title: Hello
+                  _ct_org_title: Hello
+                  body: null
+                  author: null
+                  _ct_org_author: null
+                - __id__: persist-Note-64dcf057f02549001d0d19ff
+                  _id: 64dcf057f02549001d0d19ff
+                  _template: Note
+                  __version__: '1'
+                  title: Otherland
+                  _ct_org_title: Otherland
+                  body: So many books
+                  author:
+                    notes:
+                      - __id__: persist-Note-64dcf057f02549001d0d19ff
+                    __id__: persist-Author-64dcf035f02549001d0d19fe
+                    _id: 64dcf035f02549001d0d19fe
+                    _template: Author
+                    __version__: '1'
+                    name: Tad Williams
+                    _ct_org_name: Tad Williams
+                  _ct_org_author: 64dcf035f02549001d0d19fe
+                - __id__: persist-Note-64dcf063f02549001d0d1a00
+                  _id: 64dcf063f02549001d0d1a00
+                  _template: Note
+                  __version__: '1'
+                  title: This is a note
+                  _ct_org_title: This is a note
+                  body: This is the body
+                  _ct_org_author: 64dbe7f9ba9cb8001dfc5d20
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+  /api/v1/notes/{_id}:
+    get:
+      security: []
+      tags:
+        - api
+      summary: api
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  __id__:
+                    type: string
+                  _id:
+                    type: string
+                  _template:
+                    type: string
+                  __version__:
+                    type: string
+                  title:
+                    type: string
+                  _ct_org_title:
+                    type: string
+                  body:
+                    type: string
+                  author:
+                    type: object
+                    properties:
+                      notes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            __id__:
+                              type: string
+                      __id__:
+                        type: string
+                      _id:
+                        type: string
+                      _template:
+                        type: string
+                      __version__:
+                        type: string
+                      name:
+                        type: string
+                      _ct_org_name:
+                        type: string
+                  _ct_org_author:
+                    type: string
+              example:
+                __id__: persist-Note-64dcf057f02549001d0d19ff
+                _id: 64dcf057f02549001d0d19ff
+                _template: Note
+                __version__: '1'
+                title: Otherland
+                _ct_org_title: Otherland
+                body: So many books
+                author:
+                  notes:
+                    - __id__: persist-Note-64dcf057f02549001d0d19ff
+                  __id__: persist-Author-64dcf035f02549001d0d19fe
+                  _id: 64dcf035f02549001d0d19fe
+                  _template: Author
+                  __version__: '1'
+                  name: Tad Williams
+                  _ct_org_name: Tad Williams
+                _ct_org_author: 64dcf035f02549001d0d19fe
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+    delete:
+      security: []
+      tags:
+        - api
+      summary: api
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  notes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        __id__:
+                          type: string
+                        _id:
+                          type: string
+                        _template:
+                          type: string
+                        __version__:
+                          type: string
+                        title:
+                          type: string
+                        _ct_org_title:
+                          type: string
+                        body:
+                          type: string
+                        author:
+                          type: object
+                          properties:
+                            __id__:
+                              type: string
+                        _ct_org_author:
+                          type: string
+                  __id__:
+                    type: string
+                  _id:
+                    type: string
+                  _template:
+                    type: string
+                  __version__:
+                    type: string
+                  name:
+                    type: string
+                  _ct_org_name:
+                    type: string
+              example:
+                notes:
+                  - __id__: persist-Note-64dcf063f02549001d0d1a00
+                    _id: 64dcf063f02549001d0d1a00
+                    _template: Note
+                    __version__: '1'
+                    title: This is a note
+                    _ct_org_title: This is a note
+                    body: This is the body
+                    author:
+                      __id__: persist-Author-64dbe7f9ba9cb8001dfc5d20
+                    _ct_org_author: 64dbe7f9ba9cb8001dfc5d20
+                __id__: persist-Author-64dbe7f9ba9cb8001dfc5d20
+                _id: 64dbe7f9ba9cb8001dfc5d20
+                _template: Author
+                __version__: '1'
+                name: asdf
+                _ct_org_name: asdf
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
+    put:
+      security: []
+      tags:
+        - api
+      summary: api
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                __id__:
+                  type: string
+                _id:
+                  type: string
+                _template:
+                  type: string
+                __version__:
+                  type: string
+                title:
+                  type: string
+                _ct_org_title:
+                  type: string
+                body:
+                  type: string
+                author:
+                  type: object
+                  properties:
+                    notes:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          __id__:
+                            type: string
+                          _id:
+                            type: string
+                          _template:
+                            type: string
+                          __version__:
+                            type: string
+                          title:
+                            type: string
+                          _ct_org_title:
+                            type: string
+                          body:
+                            type: string
+                          author:
+                            type: object
+                            properties:
+                              __id__:
+                                type: string
+                          _ct_org_author:
+                            type: string
+                        required:
+                          - __id__
+                    __id__:
+                      type: string
+                    _id:
+                      type: string
+                    _template:
+                      type: string
+                    __version__:
+                      type: string
+                    name:
+                      type: string
+                    _ct_org_name:
+                      type: string
+                _ct_org_author:
+                  type: string
+            example:
+              __id__: persist-Note-64dcf30cf02549001d0d1a01
+              _id: 64dcf30cf02549001d0d1a01
+              _template: Note
+              __version__: '1'
+              title: test
+              _ct_org_title: abcd
+              body: defc
+              author:
+                notes:
+                  - __id__: persist-Note-64dcf057f02549001d0d19ff
+                    _id: 64dcf057f02549001d0d19ff
+                    _template: Note
+                    __version__: '1'
+                    title: Otherland
+                    _ct_org_title: Otherland
+                    body: So many books
+                    author:
+                      __id__: persist-Author-64dcf035f02549001d0d19fe
+                    _ct_org_author: 64dcf035f02549001d0d19fe
+                  - __id__: persist-Note-64dcf30cf02549001d0d1a01
+                __id__: persist-Author-64dcf035f02549001d0d19fe
+                _id: 64dcf035f02549001d0d19fe
+                _template: Author
+                __version__: '1'
+                name: Tad Williams
+                _ct_org_name: Tad Williams
+              _ct_org_author: 64dcf035f02549001d0d19fe
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  __id__:
+                    type: string
+                  _id:
+                    type: string
+                  _template:
+                    type: string
+                  __version__:
+                    type: number
+                  title:
+                    type: string
+                  _ct_org_title:
+                    type: string
+                  body:
+                    type: string
+                  author:
+                    type: object
+                    properties:
+                      notes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            __id__:
+                              type: string
+                            _id:
+                              type: string
+                            _template:
+                              type: string
+                            __version__:
+                              type: string
+                            title:
+                              type: string
+                            _ct_org_title:
+                              type: string
+                            body:
+                              type: string
+                            author:
+                              type: object
+                              properties:
+                                __id__:
+                                  type: string
+                            _ct_org_author:
+                              type: string
+                          required:
+                            - __id__
+                      __id__:
+                        type: string
+                      _id:
+                        type: string
+                      _template:
+                        type: string
+                      __version__:
+                        type: string
+                      name:
+                        type: string
+                      _ct_org_name:
+                        type: string
+                  _ct_org_author:
+                    type: string
+              example:
+                __id__: persist-Note-64dcf30cf02549001d0d1a01
+                _id: 64dcf30cf02549001d0d1a01
+                _template: Note
+                __version__: 2
+                title: test
+                _ct_org_title: abcd
+                body: defc
+                author:
+                  notes:
+                    - __id__: persist-Note-64dcf057f02549001d0d19ff
+                      _id: 64dcf057f02549001d0d19ff
+                      _template: Note
+                      __version__: '1'
+                      title: Otherland
+                      _ct_org_title: Otherland
+                      body: So many books
+                      author:
+                        __id__: persist-Author-64dcf035f02549001d0d19fe
+                      _ct_org_author: 64dcf035f02549001d0d19fe
+                    - __id__: persist-Note-64dcf30cf02549001d0d1a01
+                  __id__: persist-Author-64dcf035f02549001d0d19fe
+                  _id: 64dcf035f02549001d0d19fe
+                  _template: Author
+                  __version__: '1'
+                  name: Tad Williams
+                  _ct_org_name: Tad Williams
+                _ct_org_author: 64dcf035f02549001d0d19fe
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              example:
+                message: Sorry unable to perform operation.
