@@ -15,3 +15,4 @@ COPY . .
 WORKDIR /app/angular-daemon
 RUN npm run compile
 RUN npm run copyStatics
+RUN sed -i -e 's/\"dbpath\": \".*\"/\"dbpath\": \"postgres\"/' /app/angular-daemon/dist/config.json

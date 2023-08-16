@@ -1,0 +1,4 @@
+angular-client/node_modules
+angular-client/dist
+angular-daemon/node_modules
+angular-daemon/dist

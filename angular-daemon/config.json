@@ -10,7 +10,7 @@
   "application": "note",
   "dbdriver": "knex",
   "dbtype": "pg",
-  "dbpath": "postgres",
+  "dbpath": "localhost",
   "dbname": "amorphic_notes",
   "dbuser": "nodejs",
   "dbpassword": "nodejs"
