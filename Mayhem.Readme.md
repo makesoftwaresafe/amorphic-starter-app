@@ -36,7 +36,7 @@ developer tools.
 I converted this file into an OpenAPI spec using the Mayhem `mapi` CLI:
 
 ```bash
-api convert har ./amorphic.har > openapi.json
+mapi convert har ./amorphic.har > openapi.json
 ```
 
 The converted spec was close, but needed some adjustments.
